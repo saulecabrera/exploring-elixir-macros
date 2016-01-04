@@ -6,6 +6,7 @@
 /deps
 erl_crash.dump
 *.ez
+*.beam
 
 #### joe made this: https://goel.io/joe
 
