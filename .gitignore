@@ -1,0 +1,19 @@
+#### joe made this: https://goel.io/joe
+
+#####=== Elixir ===#####
+
+/_build
+/deps
+erl_crash.dump
+*.ez
+
+#### joe made this: https://goel.io/joe
+
+#####=== Vim ===#####
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
