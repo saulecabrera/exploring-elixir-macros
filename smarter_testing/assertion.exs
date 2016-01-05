@@ -4,7 +4,7 @@ defmodule Assertion do
   # the injected code will be
   # import Assertion
   # Module.register_attribute <user module>, :tests, accumulate: true
-  # @before_compile Assert
+  # @before_compile Assertion
   defmacro __using__(_options) do
     quote do
       import unquote(__MODULE__)
