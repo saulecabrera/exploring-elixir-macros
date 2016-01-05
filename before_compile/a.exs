@@ -6,7 +6,7 @@ defmodule A do
   # before its compilation starts;
   # in this specific case, the function 
   # hello/1 will be injected at the end 
-  # module B
+  # of module B
   defmacro __before_compile__ (_env) do
     quote do
       def hello, do: "world"
