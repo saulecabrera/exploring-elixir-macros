@@ -38,11 +38,42 @@ end
 
 defmodule Assertion.Test do
   def run(tests, module) do
+    Enum.each tests, fn {test_func, description} ->
+      case apply(module, test_func, []) do
+        :ok             -> IO.write "."
+        {:fail, reason} -> IO.puts """
+          FAILURE: #{description}
+          #{reason}
+        """
+      end
+    end 
   end
 
-  def assert(op, lhs, rhs) do
-    IO.puts op
-    IO.puts lhs
-    IO.puts rhs
+  def assert(:==, lhs, rhs) when lhs == rhs do
+    :ok
+  end
+
+  def assert(:==, lhs, rhs) do
+    {
+      :fail,
+      """
+      Expected:
+      #{lhs} to be equal to #{rhs}
+      """
+    }
+  end
+
+  def assert(:>, lhs, rhs) when lhs > rhs do
+   :ok 
+  end
+
+  def assert(:>, lhs, rhs) do
+    {
+      :fail,
+      """
+      Expected:
+      #{lhs} to be greater than #{rhs}
+      """
+    }
   end
 end
