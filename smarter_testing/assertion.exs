@@ -16,7 +16,7 @@ defmodule Assertion do
   defmacro __before_compile__(_env) do
     quote do
       def run do
-        IO.puts "Running the tests (#{inspect @tests})"
+        Assertion.Test.run(@tests, __MODULE__)
       end
     end
   end
