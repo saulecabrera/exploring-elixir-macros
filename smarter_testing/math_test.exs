@@ -6,4 +6,9 @@ defmodule MathTest do
     assert 2 + 3 == 5
     assert 5 - 5 == 10
   end
+
+  test "bolean values" do
+    assert true
+    assert false
+  end
 end
