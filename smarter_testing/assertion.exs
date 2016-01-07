@@ -34,6 +34,8 @@ defmodule Assertion do
       Assertion.Test.assert(operator, lhs, rhs)
     end
   end
+ 
+  defmacro assert(bool), do: Assertion.Test.assert (bool)
 end
 
 defmodule Assertion.Test do
@@ -49,6 +51,19 @@ defmodule Assertion.Test do
           """
       end
     end 
+  end
+
+  def assert(b) when is_boolean(b) do
+    if b do
+      :ok
+    else
+      {
+        :fail,
+        """
+        Expected a true value, got false
+        """
+      } 
+    end
   end
 
   def assert(:==, lhs, rhs) when lhs == rhs do
