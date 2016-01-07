@@ -42,9 +42,11 @@ defmodule Assertion.Test do
       case apply(module, test_func, []) do
         :ok             -> IO.write "."
         {:fail, reason} -> IO.puts """
+          --------
           FAILURE: #{description}
+          --------
           #{reason}
-        """
+          """
       end
     end 
   end
@@ -57,8 +59,8 @@ defmodule Assertion.Test do
     {
       :fail,
       """
-      Expected:
-      #{lhs} to be equal to #{rhs}
+      Expected:             #{lhs}
+      to be equal to:       #{rhs}
       """
     }
   end
