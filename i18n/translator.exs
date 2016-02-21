@@ -28,17 +28,20 @@ defmodule Translator do
       deftranslations(locale, "", mappings)
     end
 
-    quote do
+    final_ast = quote do
       #body-less fuction
       #used for: documentation, default parameters, Protocols
       def t(locale, path, bindings \\ [])
       unquote(translations_ast)
       def t(_locale, _path, _bindings), do: {:error, :no_translation}
     end
+
+    IO.puts Macro.to_string(final_ast)
+    final_ast
   end
 
   defp deftranslations(locale, current_path, mappings) do
-    for {key, val} <- do
+    for {key, val} <- mappings do
       path = append_path(current_path, key)
       if Keyword.keyword?(val) do
         deftranslations(locale, path, val)
